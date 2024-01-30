@@ -1,0 +1,119 @@
+******************************************************************************
+LA 1 CODES
+******************************************************************************
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# **EDA LA1**
+## R Ritesh ( 1NT21IS121 )
+
+
+**Installing Package**
+```{r}
+# Set a CRAN mirror
+options(repos = c(CRAN = "https://cran.rstudio.com"))
+```
+**Loading Package**
+```{r}
+# Install and load the package
+install.packages("readxl")
+library(readxl)
+
+# Read the data
+a <- read.csv("E:/archive/googleplaystore.csv") 
+str(a)
+```
+
+**Summary Of Dataset**
+```{r}
+summary(a)
+```
+
+**Loading Another Dataset**
+```{r}
+b <- read.csv("E:/archive/googleplaystore_user_reviews.csv")
+str(b)
+summary(b)
+```
+**Table**
+```{r}
+table(a$Category)
+```
+**Structure**
+```{r}
+str(a)
+```
+**Viewing**
+```{r}
+ls(a)
+```
+**Pattern**
+```{r}
+ls(pattern= 'a')
+```
+**Head Function**
+```{r}
+head(a)
+```
+**Summary**
+```{r}
+summary(a)
+```
+**Mean**
+```{r}
+
+mean(a$Rating)
+
+```
+
+**SD**
+```{r}
+sd(a$Rating)
+```
+**Unique**
+```{r}
+unique(a$Reviews)
+```
+**Table**
+```{r}
+table(a$Generes)
+```
+**Median**
+
+```{r}
+median(a$Rating)
+```
+
+**Median OF Reviews**
+
+```{r}
+median(a$Reviews)
+```
+**Names**
+
+```{r}
+names(a)
+```
+
+**Unique**
+```{r}
+unique(a$Rating)
+```
+
+**Scale**
+
+```{r}
+scale(a$Rating)
+```
+
+**Sample**
+```{r}
+sample(a$Type)
+```
+
+
+
+

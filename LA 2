@@ -2,13 +2,12 @@
 LA2 CODES
 ***********************************************************************************
 
----
-output:
-  html_document: default
-  pdf_document: default
----
+
 # **EDA LA1**
 ## R Ritesh ( 1NT21IS121 )
+---
+output: https://github.com/Ritexx/EDA.git
+---
 
 **Installing Package**
 ```{r}
@@ -20,7 +19,9 @@ options(repos = c(CRAN = "https://cran.rstudio.com"))
 install.packages("reshape2")
 install.packages(c("readr", "ggplot2", "dplyr"))
 install.packages("plotly")
-
+```
+**Loading packages**
+```{r}
 library(readr)
 library(ggplot2)
 library(dplyr)
@@ -55,8 +56,11 @@ ggplot(b, aes(x = Sentiment_Polarity, y = Sentiment_Subjectivity, color = Sentim
        x = "Sentiment Polarity",
        y = "Sentiment Subjectivity",
        color = "Sentiment")
+```
+**# Histogram of Sentiment Polarity**
 
-# Histogram of Sentiment Polarity
+
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   geom_histogram(binwidth = 0.1, position = "dodge", alpha = 0.7) +
   labs(title = "Histogram of Sentiment Polarity",
@@ -64,8 +68,9 @@ ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
        y = "Count") +
   theme_minimal()
 
-
-# Line Plot of Sentiment Polarity
+```
+**# Line Plot of Sentiment Polarity** 
+```{r}
 ggplot(b, aes(x = seq_along(Sentiment), y = Sentiment_Polarity)) +
   geom_line() +
   labs(title = "Line Plot of Sentiment Polarity",
@@ -73,9 +78,10 @@ ggplot(b, aes(x = seq_along(Sentiment), y = Sentiment_Polarity)) +
        y = "Sentiment Polarity") +
   theme_minimal()
 
+```
 
-
-# Box Plot of Sentiment Polarity
+**# Box Plot of Sentiment Polarity**
+```{r}
 ggplot(b, aes(x = 1, y = Sentiment_Polarity, fill = Sentiment)) +
   geom_boxplot(alpha = 0.7) +
   labs(title = "Box Plot of Sentiment Polarity",
@@ -83,9 +89,10 @@ ggplot(b, aes(x = 1, y = Sentiment_Polarity, fill = Sentiment)) +
        y = "Sentiment Polarity") +
   theme_minimal()
 
+```
 
-
-# Density Plot of Sentiment Polarity
+**# Density Plot of Sentiment Polarity**
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   geom_density(alpha = 0.7) +
   labs(title = "Density Plot of Sentiment Polarity",
@@ -95,9 +102,10 @@ ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   theme_minimal()
 
 
+```
 
-
-# Histogram with Density Curve of Sentiment Polarity
+**# Histogram with Density Curve of Sentiment Polarity**
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   geom_histogram(binwidth = 0.1, position = "dodge", alpha = 0.7) +
   geom_density(aes(y = ..count..), alpha = 0.5, color = "red") +
@@ -107,8 +115,9 @@ ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   theme_minimal()
 
 
-
-# Create a density plot for each group of Sentiment
+```
+**# Create a density plot for each group of Sentiment**
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   geom_density(alpha = 0.7) +
   labs(title = "Density Plots of Sentiment Polarity by Group",
@@ -117,9 +126,10 @@ ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   theme_minimal() +
   facet_wrap(~Sentiment, scales = "free_y")
 
+```
 
-
-# Create a frequency polygon for Sentiment_Polarity
+**# Create a frequency polygon for Sentiment_Polarity**
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity)) +
   geom_freqpoly(binwidth = 0.1, color = "blue", fill = "skyblue", alpha = 0.7) +
   labs(title = "Frequency Polygon of Sentiment Polarity",
@@ -127,9 +137,10 @@ ggplot(b, aes(x = Sentiment_Polarity)) +
        y = "Frequency") +
   theme_minimal()
 
+```
 
-
-# Create a box plot with notches for Sentiment Polarity
+**# Create a box plot with notches for Sentiment Polarity**
+```{r}
 ggplot(b, aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment)) +
   geom_boxplot(notch = TRUE, alpha = 0.7) +
   labs(title = "Box Plot with Notches for Sentiment Polarity",
@@ -137,9 +148,10 @@ ggplot(b, aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment)) +
        y = "Sentiment Polarity") +
   theme_minimal()
 
+```
 
-
-# Create multiple dot plots for Sentiment Polarity grouped by Sentiment
+**# Create multiple dot plots for Sentiment Polarity grouped by Sentiment**
+```{r}
 ggplot(b, aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment)) +
   geom_dotplot(binaxis = 'y', stackdir = 'center', position = 'dodge', dotsize = 0.5, alpha = 0.7) +
   labs(title = "Multiple Dot Plots for Sentiment Polarity",
@@ -147,9 +159,10 @@ ggplot(b, aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment)) +
        y = "Sentiment Polarity") +
   theme_minimal()
 
+```
 
-
-# Create a density plot of Sentiment Polarity and Sentiment Subjectivity
+**# Create a density plot of Sentiment Polarity and Sentiment Subjectivity**
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity, y = Sentiment_Subjectivity)) +
   geom_density_2d(fill = "skyblue", color = "black", alpha = 0.7) +
   labs(title = "Density Plot of Sentiment Polarity and Subjectivity",
@@ -159,8 +172,9 @@ ggplot(b, aes(x = Sentiment_Polarity, y = Sentiment_Subjectivity)) +
 
 
 
-
-# Create histograms with new facet labels
+```
+**# Create histograms with new facet labels**
+```{r}
 ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
   geom_histogram(binwidth = 0.1, position = "dodge", alpha = 0.7) +
   labs(title = "Histograms of Sentiment Polarity",
@@ -171,8 +185,9 @@ ggplot(b, aes(x = Sentiment_Polarity, fill = Sentiment)) +
 
 
 
-
-# Create a Violin Plot
+```
+**# Create a Violin Plot**
+```{r}
 ggplot(b, aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment)) +
   geom_violin(trim = FALSE, alpha = 0.7) +
   labs(title = "Violin Plot of Sentiment Polarity",
@@ -180,9 +195,10 @@ ggplot(b, aes(x = Sentiment, y = Sentiment_Polarity, fill = Sentiment)) +
        y = "Sentiment Polarity") +
   theme_minimal()
 
+```
 
-
-# Calculate the correlation matrix
+**# Calculate the correlation matrix**
+```{r}
 cor_matrix <- cor(select(b, Sentiment_Polarity, Sentiment_Subjectivity))
 
 # Convert the correlation matrix to a long format
@@ -198,8 +214,9 @@ ggplot(data = cor_long, aes(x = Var1, y = Var2, fill = value)) +
   theme_minimal()
   
 
-
-# Create a 3D scatter plot
+```
+**# Create a 3D scatter plot**
+```{r}
 plot_ly(b, x = ~Sentiment_Polarity, y = ~Sentiment_Subjectivity, z = ~Sentiment, color = ~Sentiment, type = "scatter3d", mode = "markers") %>%
   layout(scene = list(xaxis = list(title = "Sentiment Polarity"),
                       yaxis = list(title = "Sentiment Subjectivity"),
